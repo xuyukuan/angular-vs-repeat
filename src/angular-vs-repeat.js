@@ -533,6 +533,7 @@
 
                             $scope.startIndex = $$options.latch ? _minStartIndex : __startIndex;
                             $scope.endIndex = $$options.latch ? _maxEndIndex : __endIndex;
+                            if ($scope.startIndex > $scope.endIndex) return false;
 
                             var digestRequired = false;
                             if (_prevStartIndex == null) {
@@ -559,10 +560,7 @@
                                 }
                             }
 
-                            if (digestRequired) {
-                                if ($scope.startIndex > $scope.endIndex) {
-                                    return;
-                                }
+                            if (digestRequired) {                                
                                 $scope[collectionName] = originalCollection.slice($scope.startIndex, $scope.endIndex);
 
                                 // Emit the event
