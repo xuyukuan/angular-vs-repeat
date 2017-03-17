@@ -560,6 +560,9 @@
                             }
 
                             if (digestRequired) {
+                                if ($scope.startIndex > $scope.endIndex) {
+                                    return;
+                                }
                                 $scope[collectionName] = originalCollection.slice($scope.startIndex, $scope.endIndex);
 
                                 // Emit the event
